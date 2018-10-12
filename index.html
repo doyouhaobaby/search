@@ -1,0 +1,27 @@
+<script type="text/javascript">
+var hash = window.location.hash;
+hash = hash.substr(1);
+
+function getJson(arr){
+    var theRequest = new Object();
+
+    for (var i = 0; i < arr.length; i++) {
+        var kye = arr[i].split("=")[0]
+        var value = arr[i].split("=")[1]
+        theRequest[kye] = value
+    }
+
+    return theRequest;
+}
+
+var url = getJson(hash.split('&'));
+
+var testsClass = url.c;
+var testsMethod = url.m;
+
+var url = 'https://github.com/hunzhiwange/framework/search?q='+
+    testsClass+'+'+testsMethod+'+&unscoped_q='+
+    testsClass+'+'+testsMethod;
+
+window.location.href = url;
+</script>
